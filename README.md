@@ -68,3 +68,11 @@ server response.
 On Next.js applications, we have some special file names reserved for special purposes.
 
 ![alt text](image-3.png)
+
+## Rendering a client component inside a server side component
+
+![alt text](image-4.png)
+
+The solution for the edit page is as follows:
+
+![alt text](image-5.png)
