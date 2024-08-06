@@ -62,3 +62,9 @@ Recomendation on using a client component:
 Even though this kind of component tells us that is directly related to the client, when user makes a request to the 
 server, client components do get rendered one time on the server, then html is formed and sent to the client as a 
 server response.
+
+## Special file names
+
+On Next.js applications, we have some special file names reserved for special purposes.
+
+![alt text](image-3.png)
