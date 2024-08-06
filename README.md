@@ -60,4 +60,5 @@ Recomendation on using a client component:
 - You need to use event handlers
 
 Even though this kind of component tells us that is directly related to the client, when user makes a request to the 
-server, client components do get rendered one time on the server.
+server, client components do get rendered one time on the server, then html is formed and sent to the client as a 
+server response.
