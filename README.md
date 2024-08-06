@@ -76,3 +76,40 @@ On Next.js applications, we have some special file names reserved for special pu
 The solution for the edit page is as follows:
 
 ![alt text](image-5.png)
+
+### Server action inside client components
+
+![alt text](image-6.png)
+
+Ok, we already know how and why to use `server actions` on next applications, but here we get a major important
+rule when working with client components:
+
+`Server actions cannot be defined in client components`
+
+![alt text](image-7.png)
+
+There are two ways to deal with this situation:
+
+#### Passing a server action through props 
+
+This way, the parent component, which must be a server component, passes through props the action. Pretty much like a 
+normal react component behavior.
+
+#### Exporting the action from a isolated file
+
+Using this option, we have the bennefit of sharing this action through all our application, which is hosted on an 
+isolated file.
+
+This way we must use the string `"use server"` just one single time on the top of the file, and thats it.
+
+### Using a server action 
+
+There are many different ways to use a server action inside a client component. Very interesting solutions are:
+
+#### Using bind of the action itself among componenet data (state...)
+
+There is a huge benefit. Form will work even if the client can´t run javascript (big companies, government)
+
+#### Using async await and event handlers
+
+On this solution, we don´t have to worry about the bind function and it is closer to a react normal behavior.

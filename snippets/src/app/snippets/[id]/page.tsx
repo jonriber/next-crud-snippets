@@ -1,8 +1,7 @@
 import { db } from "@/db";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import SnippetEditForm from "@/components/snippet-edit-form";
-
+import { deleteSnippet } from "@/actions";
 interface SnippetProps {
     params: {
         id: string;
@@ -17,6 +16,8 @@ export default async function Snippet(props: SnippetProps) {
         }
     });
 
+    const deleteSnippetAction = deleteSnippet.bind(null, parseInt(props.params.id));
+
     if (!snippet) {
         notFound(); 
     }
@@ -27,7 +28,9 @@ export default async function Snippet(props: SnippetProps) {
                 <h1 className="text-xl font-bold">{snippet.title}</h1>
                 <div className="flex gap-4">
                     <Link href={`/snippets/${snippet.id}/edit`} className="p-2 border rounded">Edit</Link>
-                    <button className="p-2 border rounded">Delete</button>
+                    <form action={deleteSnippetAction}>
+                        <button className="p-2 border rounded">Delete</button>
+                    </form>
                 </div>
             </div>
             <pre className="p-3 border rounded bg-gray-200 border-gray-200">
