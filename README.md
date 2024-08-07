@@ -116,3 +116,21 @@ On this solution, we don´t have to worry about the bind function and it is clos
 
 ## Handling errors
 
+Now, there is a very very tricky way to handle form validation using server side components along with client side
+components.
+
+On this example, we've used a hook called `useFormstate` to implement a react in our client side from a validation that
+occurs on the server side.
+
+Basically, server actions `createSnippet` now receives two arguments: `formState` and `formData`. If this actions 
+returns a message, than it will cause a re-render on our client side component, and formState get´s updated there.
+
+### special file name error.tsx
+
+There is a special file name that when included on a page folder, turns to be the preferred file to deal with error
+for that page, due to it's location (closest to the page).
+
+Error pages `must` be a client side component!!!
+
+`important note: We do not want to put our next.js redirect function inside a try-catch block. This kind of function
+works returning or trowing an error that is not actually an error. It is something that Next.js is waiting for.`

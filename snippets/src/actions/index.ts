@@ -33,23 +33,37 @@ export async function deleteSnippet(id: number|undefined) {
 
 export async function createSnippet(formState:{message:string},formData: FormData) {
 
-    const title = formData.get("title");
-    const code = formData.get("code");
+   
 
-    if(typeof title !== "string" || title.length < 3) {
-        return {message: "Title must be at least 3 characters long"};
+    try{
+        const title = formData.get("title");
+        const code = formData.get("code");
+
+        
+        if(typeof title !== "string" || title.length < 3) {
+            return {message: "Title must be at least 3 characters long"};
+        }
+    
+        if(typeof code !== "string" || code.length < 10) {
+            return {message: "Code must be at least 10 characters long"};
+        }
+    
+        const snippet = await db.snippet.create({ 
+          data: {
+            title, 
+            code 
+          }
+        });
+        console.log("Snippet created", snippet);
+
+    } catch (error:unknown){
+        if(error instanceof Error){
+            console.error(error.message);
+            return {message: error.message};
+        }else{
+            return{message: "An error occurred"};
+        }
     }
-
-    if(typeof code !== "string" || code.length < 10) {
-        return {message: "Code must be at least 10 characters long"};
-    }
-
-    const snippet = await db.snippet.create({ 
-      data: {
-        title, 
-        code 
-      }
-    });
-    console.log("Snippet created", snippet);
+    
     redirect("/");
   }
