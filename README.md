@@ -192,3 +192,15 @@ build a prod version locally:
 Now, start a prod version locally:
 
 `npm run start`
+
+### Vercel and Next
+
+Install vercel through npm globally
+
+once configured, you simply goes to the directory of your front-end application, the one with .next file and run:
+
+`vercel`
+
+for production deployment on vercel:
+
+`vercel --prod`
