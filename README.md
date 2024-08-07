@@ -179,3 +179,16 @@ data available.
 ### GenerateStaticParams
 
 ![alt text](image-14.png)
+
+## Production Mode
+
+That´s it, not get this thing tested and ready to prod! Here is where our applications comes to life and where 
+caching really starts to shine and show performance with really amazingly fast updates.
+
+build a prod version locally:
+
+`npm run build`
+
+Now, start a prod version locally:
+
+`npm run start`
