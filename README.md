@@ -11,7 +11,7 @@ A light and smart next.js application for CRUD on Snippets
 
 ## Server Actions
 
-The key to understand here is that some code is on our server side and some are on the client side.
+The key to understand here is that some code is on our server side and some other on the client side.
 
 On normal React.js applications, server actions would be structured like the following image:
 ![alt text](image.png)
@@ -134,3 +134,48 @@ Error pages `must` be a client side component!!!
 
 `important note: We do not want to put our next.js redirect function inside a try-catch block. This kind of function
 works returning or trowing an error that is not actually an error. It is something that Next.js is waiting for.`
+
+## Caching 
+
+Here is a feature on next.js that needs to be understood correctly, because if not, it can make the application
+go crazy or lead to unexpected behavior.
+
+`important note: Caching is useful on production mode`
+
+![alt text](image-8.png)
+
+### Full route caching
+
+This is where next can lead our aplication to unexpected behavior. Basically, when building on production mode,
+next analyzes each existing route and classify it on `static` or `dynamic`.
+
+#### static route
+
+Means next thinks this content doesn´t change accross time, and so, it's caching system will make it render once.
+
+#### dynamic route
+
+Next will treat this as a route that changes a lot, and so, it will disable hard and aggressive caching system to make
+data available.
+
+![alt text](image-9.png)
+
+### Using caching control
+
+![alt text](image-10.png)
+
+#### Time based
+
+![alt text](image-11.png)
+
+#### On-demand
+
+![alt text](image-12.png)
+
+#### Cache disabled
+
+![alt text](image-13.png)
+
+### GenerateStaticParams
+
+![alt text](image-14.png)

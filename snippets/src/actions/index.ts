@@ -1,8 +1,7 @@
 "use server"
 import { db } from "@/db";
 import { redirect } from "next/navigation";
-import { type } from "os";
-
+import { revalidatePath } from "next/cache";
 
 
 export async function editSnippet(id: number, code: string|undefined) {
@@ -16,6 +15,7 @@ export async function editSnippet(id: number, code: string|undefined) {
     });
 
     console.log("Snippet updated", snippet);
+    revalidatePath(`/snippets/${id}`);
     redirect(`/snippets/${id}`);
 
 }
@@ -28,18 +28,16 @@ export async function deleteSnippet(id: number|undefined) {
     });
 
     console.log("Snippet deleted", snippet);
+    revalidatePath("/");
     redirect("/");
 }
 
 export async function createSnippet(formState:{message:string},formData: FormData) {
-
+    const title = formData.get("title");
+    const code = formData.get("code");
    
 
     try{
-        const title = formData.get("title");
-        const code = formData.get("code");
-
-        
         if(typeof title !== "string" || title.length < 3) {
             return {message: "Title must be at least 3 characters long"};
         }
@@ -64,6 +62,6 @@ export async function createSnippet(formState:{message:string},formData: FormDat
             return{message: "An error occurred"};
         }
     }
-    
+    revalidatePath("/");
     redirect("/");
   }
