@@ -1,6 +1,16 @@
 # next-crud-snippets
 
-A light and smart next.js application for CRUD on Snippets
+A light and smart next.js application for CRUD on Snippets.
+
+Were applied `key points` from next.js development:
+
+- Routing systems
+- Server actions
+- Components
+- Caching
+- Prod & Deployment
+
+[Prod LIVE version on VERCEL](https://snippets-topaz.vercel.app) 
 
 ## Specs
 
