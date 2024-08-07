@@ -113,3 +113,6 @@ There is a huge benefit. Form will work even if the client can´t run javascript
 #### Using async await and event handlers
 
 On this solution, we don´t have to worry about the bind function and it is closer to a react normal behavior.
+
+## Handling errors
+

@@ -29,7 +29,7 @@ export default async function Snippet(props: SnippetProps) {
                 <div className="flex gap-4">
                     <Link href={`/snippets/${snippet.id}/edit`} className="p-2 border rounded">Edit</Link>
                     <form action={deleteSnippetAction}>
-                        <button className="p-2 border rounded">Delete</button>
+                        <button className="p-2 border rounded border-red-200 bg-red-200">Delete</button>
                     </form>
                 </div>
             </div>
